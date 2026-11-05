@@ -40,6 +40,21 @@ setInterval(() => {
     };
 }, 2600);
 rot.textContent = D.rotate[0];
+// Size the rotating word so the longest one fits on one line: the headline never changes height.
+const fitRot = () => {
+  const h1 = rot.parentElement;
+  const probe = h('span', {}, '');
+  probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font-size:1em;';
+  h1.append(probe);
+  let widest = 0;
+  D.rotate.forEach(w => { probe.textContent = w; widest = Math.max(widest, probe.getBoundingClientRect().width); });
+  probe.remove();
+  const avail = h1.getBoundingClientRect().width;
+  rot.style.fontSize = Math.min(1, avail / (widest * 1.04)) + 'em';
+};
+fitRot();
+addEventListener('resize', fitRot);
+document.fonts && document.fonts.ready.then(fitRot);
 
 /* marquee */
 const mq = $('#mq');
