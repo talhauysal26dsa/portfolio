@@ -267,3 +267,12 @@ body{background:transparent!important}
 .stage{max-height:none}
 .stage .sound{position:absolute;left:12px;bottom:12px;z-index:4;font:inherit;font-size:12.5px;padding:7px 12px;border-radius:999px;border:1px solid var(--line2);background:rgba(0,0,0,.6);backdrop-filter:blur(10px);color:#fff;cursor:pointer}
 .stage .sound:hover{background:rgba(124,92,255,.6)}
+
+/* layout-shift fixes */
+.ba img{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:cover}
+.ba .after{position:absolute;inset:0}
+.hero h1 .rot{display:block;white-space:nowrap;font-size:min(1em,5vw);line-height:1.1}
+.marquee .track>video{width:320px}
+.marquee .track>img{aspect-ratio:4/3}
+.tabs.strip{min-height:100px}
+@media (max-width:980px){.hero h1 .rot{font-size:min(1em,11vw)}}

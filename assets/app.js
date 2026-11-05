@@ -141,6 +141,12 @@ const R = {
   ba(it) {
     const wrap = h('div', { class: 'frame ba' });
     wrap.style.setProperty('--p', '50%');
+    // reserve the box size up front so lazy images never push the page around
+    const dim = (window.DIMS || {})[it.before];
+    const ar = dim ? dim[0] / dim[1] : 4 / 3;
+    wrap.style.aspectRatio = String(ar);
+    wrap.style.width = `min(100%, calc(76vh * ${ar}))`;
+    wrap.style.marginInline = 'auto';
     wrap.innerHTML = `<img src="${it.before}" loading="lazy" alt="">
       <div class="after"><img src="${it.after}" loading="lazy" alt=""></div>
       <div class="handle"></div>
