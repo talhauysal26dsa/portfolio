@@ -278,3 +278,4 @@ body{background:transparent!important}
 @media (max-width:980px){.hero h1 .rot{font-size:min(1em,11vw)}}
 .hero h1 .rot{display:block;white-space:nowrap;font-size:1em;height:1.15em;line-height:1.15;overflow:visible}
 @media (max-width:980px){.hero h1 .rot{font-size:1em}}
+@media (max-width:980px){.hero h1,.hero p{max-width:none}}
