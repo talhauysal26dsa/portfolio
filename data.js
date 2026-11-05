@@ -15,7 +15,7 @@ window.PORTFOLIO = {
     "media/refstyle/0b72fa76_out.webp",
     "media/car/lamborghini-huracan-orange.mp4",
     "media/blueprint/21_17_out.webp",
-    "media/view360/06_steady.mp4"
+    "media/me/dance_out.mp4"
   ],
   marquee: [
     "media/refstyle/0b72fa76_out.webp",
@@ -28,7 +28,8 @@ window.PORTFOLIO = {
     "media/view360/03_steady.mp4",
     "media/remover/062_s250.webp",
     "media/layout/32a89716_out.webp",
-    "media/replace/truck_w1.mp4"
+    "media/replace/truck_w1.mp4",
+    "media/me/stage_out.mp4"
   ],
 
   groups: [
@@ -132,6 +133,12 @@ window.PORTFOLIO = {
           desc: ["Swaps a person in a video for the person in a photo. Motion, camera, scene and sound stay — no compositing, every pixel is the model's own render. SCAIL-2's recipe, ported to H3 and trained by me."],
           stack: ["MiniMax-H3 33B", "ai-toolkit", "LoRA r16", "SAM3", "sglang", "MotionPair-60K", "ArcFace"],
           items: [
+            { type: "swap", ar: "3/4", lb: "Masked input", la: "Output", driving: "media/me/dance_drv.mp4", options: [
+              { name: "Me", note: "one selfie → full dance", ref: "media/me/me.webp", out: "media/me/dance_out.mp4" }
+            ], caption: "One selfie of me, dropped into a dance shot: SAM3 masks the dancer, H3 renders me with the same moves, camera and scene." },
+            { type: "swap", ar: "9/16", driving: "media/me/stage_drv.mp4", options: [
+              { name: "Me, on stage", note: "crowd and lights untouched", ref: "media/me/me.webp", out: "media/me/stage_out.mp4" }
+            ] },
             { type: "swap", ar: "9/16", center: 28, amp: 24, driving: "media/replace/td_drv.mp4", options: [
               { name: "Dog", note: "replaces the keyboard player", ref: "media/replace/pet-1.webp", out: "media/replace/td_pet.mp4" },
               { name: "Kid", note: "same shot, new reference", ref: "media/replace/boy-1.webp", out: "media/replace/td_boy.mp4" }
