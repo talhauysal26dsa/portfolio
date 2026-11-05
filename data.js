@@ -26,7 +26,6 @@ window.PORTFOLIO = {
     "media/car/lamborghini-huracan-orange.mp4",
     "media/refstyle/15c0b3c4_out.webp",
     "media/view360/03_steady.mp4",
-    "media/remover/062_s250.webp",
     "media/layout/32a89716_out.webp",
     "media/latest/bulin_out.mp4"
   ],
@@ -123,7 +122,7 @@ window.PORTFOLIO = {
     {
       id: "video", nav: "Video", eyebrow: "Video generation · motion control",
       title: "Anyone, <em>in any shot.</em>",
-      lead: "Character replacement, multi-reference video and object removal on MiniMax-H3 (33B). Training to sglang serving, SAM3 masking to prompt planning — end to end, on one H100. Drag across any video to compare.",
+      lead: "Character replacement and multi-reference video on MiniMax-H3 (33B). Training to sglang serving, SAM3 masking to prompt planning — end to end, on one H100. Drag across any video to compare.",
       projects: [
         {
           id: "h3-replace", kind: "LoRA training · MiniMax-H3 Ref2VA",
@@ -156,17 +155,8 @@ window.PORTFOLIO = {
               { name: "Jeep Wrangler", note: "lime", ref: "media/car/jeep-wrangler-lime.webp", out: "media/car/jeep-wrangler-lime.mp4" }
             ], caption: "Same stunt, three different cars — pick one and drag across." }
           ]
-        },
-        {
-          id: "person-remover", kind: "LoRA replication · MiniMax-H3",
-          title: "Person Remover",
-          tagline: "Mask a person out of a video, fill in what was behind.",
-          desc: ["Mask a person out of a video and the model fills in what was behind them. A replication of akatz-ai's LoRA that beat the released weights."],
-          stack: ["MiniMax-H3", "IC-LoRA guide", "LoRA r16", "AdamW8bit", "PSNR eval"],
-          tabs: [["062", "Gallery"], ["064", "Metro"], ["067", "Living room"], ["057", "Space station"], ["048", "Store"], ["074", "Bakery"]].map(([g, n]) => ({
-            name: n, thumb: `media/remover/${g}_s250.webp`, items: [{ type: "ba", before: `media/remover/${g}_ctrl.webp`, after: `media/remover/${g}_s250.webp`, lb: "Masked", la: "Removed" }]
-          }))
         }
+
       ]
     },
 
