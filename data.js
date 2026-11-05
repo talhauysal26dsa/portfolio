@@ -15,7 +15,7 @@ window.PORTFOLIO = {
     "media/refstyle/0b72fa76_out.webp",
     "media/car/lamborghini-huracan-orange.mp4",
     "media/blueprint/21_17_out.webp",
-    "media/me/dance_out.mp4"
+    "media/latest/calm_out.mp4"
   ],
   marquee: [
     "media/refstyle/0b72fa76_out.webp",
@@ -28,8 +28,7 @@ window.PORTFOLIO = {
     "media/view360/03_steady.mp4",
     "media/remover/062_s250.webp",
     "media/layout/32a89716_out.webp",
-    "media/replace/truck_w1.mp4",
-    "media/me/stage_out.mp4"
+    "media/latest/bulin_out.mp4"
   ],
 
   groups: [
@@ -133,19 +132,15 @@ window.PORTFOLIO = {
           desc: ["Swaps a person in a video for the person in a photo. Motion, camera, scene and sound stay — no compositing, every pixel is the model's own render. SCAIL-2's recipe, ported to H3 and trained by me."],
           stack: ["MiniMax-H3 33B", "ai-toolkit", "LoRA r16", "SAM3", "sglang", "MotionPair-60K", "ArcFace"],
           items: [
-            { type: "swap", ar: "3/4", lb: "Masked input", la: "Output", driving: "media/me/dance_drv.mp4", options: [
-              { name: "Me", note: "one selfie → full dance", ref: "media/me/me.webp", out: "media/me/dance_out.mp4" }
-            ], caption: "One selfie of me, dropped into a dance shot: SAM3 masks the dancer, H3 renders me with the same moves, camera and scene." },
-            { type: "swap", ar: "9/16", driving: "media/me/stage_drv.mp4", options: [
-              { name: "Me, on stage", note: "crowd and lights untouched", ref: "media/me/me.webp", out: "media/me/stage_out.mp4" }
-            ] },
+            { type: "swap", ar: "9/16", sound: true, driving: "media/latest/calm_drv.mp4", options: [
+              { name: "The calmest man", note: "touchline, crowd going wild", thumb: "media/latest/calm_thumb.webp", ref: "media/latest/me_cut.webp", driving: "media/latest/calm_drv.mp4", out: "media/latest/calm_out.mp4" },
+              { name: "Street freestyle", note: "hand-held, crowd around", thumb: "media/latest/bulin_thumb.webp", ref: "media/latest/me_cut.webp", driving: "media/latest/bulin_drv.mp4", out: "media/latest/bulin_out.mp4" },
+              { name: "Party", note: "eating, lip motion", thumb: "media/latest/party_thumb.webp", ref: "media/latest/me_cut.webp", driving: "media/latest/party_drv.mp4", out: "media/latest/party_out.mp4" }
+            ], caption: "Me, from one selfie, in three viral clips — the delivered model. Pick a scene, drag across, turn the sound on." },
             { type: "swap", ar: "9/16", center: 28, amp: 24, driving: "media/replace/td_drv.mp4", options: [
               { name: "Dog", note: "replaces the keyboard player", ref: "media/replace/pet-1.webp", out: "media/replace/td_pet.mp4" },
               { name: "Kid", note: "same shot, new reference", ref: "media/replace/boy-1.webp", out: "media/replace/td_boy.mp4" }
-            ], caption: "Pick a reference on the right, drag across the video. Singers, camera and sound stay untouched — 14.4 s in a single pass." },
-            { type: "swap", ar: "9/16", driving: "media/replace/truck_drv.mp4", options: [
-              { name: "Stock portrait", note: "talking, hand-held camera", ref: "media/replace/ref_w1.webp", out: "media/replace/truck_w1.mp4" }
-            ], caption: "Speech, gestures and hand-held shake carry over; only the identity comes from the photo." }
+            ], caption: "Pick a reference on the right, drag across the video. Singers, camera and sound stay untouched." }
           ]
         },
         {
@@ -159,7 +154,7 @@ window.PORTFOLIO = {
               { name: "Lamborghini Huracán", note: "orange", ref: "media/car/lamborghini-huracan-orange.webp", out: "media/car/lamborghini-huracan-orange.mp4" },
               { name: "Tesla Model 3", note: "white", ref: "media/car/tesla-model3-white.webp", out: "media/car/tesla-model3-white.mp4" },
               { name: "Jeep Wrangler", note: "lime", ref: "media/car/jeep-wrangler-lime.webp", out: "media/car/jeep-wrangler-lime.mp4" }
-            ], caption: "14.7 s, 1080², 4 chunks, ~218 s on the server." }
+            ], caption: "Same stunt, three different cars — pick one and drag across." }
           ]
         },
         {

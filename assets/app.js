@@ -103,7 +103,13 @@ const R = {
       const o = it.options[i];
       [...cards.children].forEach((c, j) => c.classList.toggle('on', i === j));
       badge.innerHTML = o.ref ? `<img src="${o.ref}" alt=""><span>${o.name}</span>` : '';
-      if (out.dataset.src !== o.out || !out.src) {
+      const wantDrv = o.driving || it.driving;
+      const drvChanged = drv.dataset.src !== wantDrv;
+      if (drvChanged) {
+        drv.dataset.src = wantDrv;
+        if (drv.src) { drv.src = wantDrv; drv.play().catch(() => {}); }
+      }
+      if (drvChanged || out.dataset.src !== o.out || !out.src) {
         out.dataset.src = o.out;
         if (drv.src) { out.src = o.out; out.addEventListener('loadeddata', () => { out.currentTime = drv.currentTime; out.play().catch(() => {}); }, { once: true }); }
         else vio.observe(out);
@@ -112,10 +118,21 @@ const R = {
     };
     if (it.options.length > 1 || it.options[0].ref) {
       it.options.forEach((o, i) => {
-        const c = h('button', { class: 'refcard' }, `<img src="${o.ref}" alt=""><span><b>${o.name}</b>${o.note ? `<i>${o.note}</i>` : ''}</span>`);
+        const c = h('button', { class: 'refcard' }, `<img src="${o.thumb || o.ref}" alt=""><span><b>${o.name}</b>${o.note ? `<i>${o.note}</i>` : ''}</span>`);
         c.onclick = () => pick(i);
         cards.append(c);
       });
+    }
+    if (it.sound) {
+      const snd = h('button', { class: 'sound' }, '🔇 sound');
+      snd.onclick = e => {
+        e.stopPropagation();
+        out.muted = !out.muted;
+        if (!out.muted) document.querySelectorAll('video').forEach(v => { if (v !== out) v.muted = true; });
+        snd.textContent = out.muted ? '🔇 sound' : '🔊 sound';
+      };
+      snd.addEventListener('pointerdown', e => e.stopPropagation());
+      stage.append(snd);
     }
     pick(0);
     box.append(stage, cards);
